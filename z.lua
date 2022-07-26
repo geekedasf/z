@@ -38,7 +38,7 @@ local data = {
             inline = true
           },
           {
-            name = "`🕐` Players Local Time",
+            name = "`🕐` Executed At",
             value = "```".. timestamp.. " EST```",
             inline = true
           },
