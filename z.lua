@@ -48,7 +48,7 @@ local data = {
             inline = true
           },
           {
-            name = "`🧍` Executors HWID",
+            name = "`🗳` Executors HWID",
             value = "```".. hwid.. "```",
             inline = false
           }
