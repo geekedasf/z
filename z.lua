@@ -6,21 +6,35 @@ local date = os.date("!*t")
 local hour = (date.hour + TIME_ZONE) % 24
 local ampm = hour < 12 and "AM" or "PM"
 local timestamp = string.format("%02i:%02i %s", ((hour - 1) % 12) + 1, date.min, ampm)
+local function getexploit()
+  local exploit =
+      (syn and not is_sirhurt_closure and not pebc_execute and "Synapse") or
+      (secure_load and "Sentinel") or
+      (is_sirhurt_closure and "Sirhurt") or
+      (pebc_execute and "ProtoSmasher") or
+      (KRNL_LOADED and "Krnl") or
+      (WrapGlobal and "WeAreDevs") or
+      (isvm and "Proxo") or
+      (shadow_env and "Shadow") or
+      (jit and "EasyExploits") or
+      (getscriptenvs and "Calamari") or
+      (unit and not syn and "Unit") or
+      (OXYGEN_LOADED and "Oxygen U") or
+      (IsElectron and "Electron") or
+      ("Unsupported")
+  return exploit
+end
 local data = {
     content = "",
     embeds = {
       {
         title = "New Execution Detected",
+        description = "Roblox Profile: **https://www.roblox.com/users/".. playerID.. "/profile**",
         color = nil,
         fields = {
           {
-            name = "`🧍` Executor's Username",
-            value = "```".. name.. "```",
-            inline = true
-          },
-          {
-            name = "`🧍` Executor's ID",
-            value = "```".. playerID.. "```",
+            name = "`🧍` Executor's Username & ID",
+            value = "```Username: ".. name.."\nID: ".. playerID.. "```",
             inline = true
           },
           {
@@ -29,8 +43,14 @@ local data = {
             inline = true
           },
           {
+            name = "`💻` Executed With",
+            value = "```".. getexploit().. "```",
+            inline = true
+          },
+          {
             name = "`🧍` Executors HWID",
-            value = "```".. hwid.. "```"
+            value = "```".. hwid.. "```",
+            inline = false
           }
       }
     }
